@@ -193,7 +193,7 @@ Le PK sono tutte univoche non avendo nessuna due o più valori uguali
 2. Esporre l’elenco dei soli prodotti venduti e per ognuno di questi il fatturato totale per anno.
 
 SELECT 
-	p.ProductID,
+    p.ProductID,
     p.ProductName,
     SUM(s.SalesAmount),
 	YEAR(s.SalesDate) AS Y
@@ -205,7 +205,7 @@ ORDER BY p.ProductName;
 3. Esporre il fatturato totale per stato per anno. Ordina il risultato per data e per fatturato decrescente.
     
 SELECT 
-	r.RegionID,
+    r.RegionID,
     r.RegionName AS Region,
     EXTRACT(YEAR FROM s.SalesDate) AS Y,
     SUM(s.SalesAmount) AS TotA
@@ -228,13 +228,13 @@ LIMIT 1;
 5. Rispondere alla seguente domanda: quali sono, se ci sono, i prodotti invenduti? Proponi due approcci risolutivi differenti. 
 
 SELECT 
-	p.ProductID,
+    p.ProductID,
     p.ProductName AS NoSellProduct
 FROM Product p
 WHERE p.ProductID NOT IN (SELECT ProductID FROM Sales);
 
 SELECT 
-	p.ProductID,
+    p.ProductID,
     p.ProductName AS NoSellProduct
 FROM Product p
 LEFT JOIN Sales s ON p.ProductID = s.ProductID
@@ -243,7 +243,7 @@ WHERE s.SaleID IS NULL;
 6. Esporre l’elenco dei prodotti con la rispettiva ultima data di vendita (la data di vendita più recente).
   
 SELECT 
-	p.ProductID,
+    p.ProductID,
     p.ProductName AS ProductName,
     MAX(s.SalesDate) AS LastSaleDate
 FROM Sales s
