@@ -195,8 +195,8 @@ Le PK sono tutte univoche non avendo nessuna due o più valori uguali
 SELECT 
     p.ProductID,
     p.ProductName,
-    SUM(s.SalesAmount),
-	YEAR(s.SalesDate) AS Y
+    SUM(s.SalesAmount) AS TotA,
+    YEAR(s.SalesDate) AS Y
 FROM sales s
 JOIN product p ON s.ProductID = p.ProductID
 GROUP BY YEAR(s.SalesDate), p.ProductID
